@@ -1,6 +1,6 @@
 import PlusMinus from "./main";
 
-test("should return a array with proportion of integers, negative and zero values", function () {
+test("should print lines with the proportion of integers, negative and zero values contained in an array", function () {
     const values = [-4, 3, -9, 0, 4, 1];
     console.log = jest.fn();
     const plusMinus = new PlusMinus();

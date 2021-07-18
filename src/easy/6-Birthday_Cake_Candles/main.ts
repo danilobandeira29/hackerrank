@@ -7,7 +7,7 @@ export default class Cake {
         this.tallestCandle = Math.max(...this.candles);
     }
 
-    countCandles(): number {
+    countTallestCandle(): number {
         return this.candles.reduce((accumulator, current) => {
             if(current === this.tallestCandle) return accumulator += 1;
             return accumulator += 0;

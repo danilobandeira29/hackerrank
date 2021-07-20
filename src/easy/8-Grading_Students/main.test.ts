@@ -1,8 +1,13 @@
-import GrandingStudents from "./main";
+import Grade from "./Grade";
+import GradingStudents from "./main";
 
-test("should round each student grades", function () {
-    const grades = [73, 67, 38, 33];
-    const gradingStudents = new GrandingStudents(grades);
-    const roundGrades = gradingStudents.roundGrades();
-    expect(roundGrades).toEqual([75, 67, 40, 33]);
+test("should return student grades rounded", function () {
+    const grades = [
+        new Grade(73),
+        new Grade(67),
+        new Grade(38),
+        new Grade(33)
+    ];
+    const gradingStudents = new GradingStudents(grades);
+    expect(gradingStudents.grades()).toEqual([75, 67, 40, 33]);
 });

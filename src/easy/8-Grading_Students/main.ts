@@ -1,22 +1,15 @@
-export default class GrandingStudents {
-    grades: number[];
+import Grade from "./Grade";
 
-    constructor (grades: number[]) {
-        this.grades = grades;
+export default class GradingStudents {
+    private _grades: Array<Grade>;
+
+    constructor (grades: Array<Grade>) {
+        this._grades = grades;
     }
 
-    roundGrades () {
-        const FACTOR_TO_ROUND_GRADE = 38;
-        const FACTOR_ROUND = 3;
-        return this.grades.map(grade => {
-            const canRoundGrade = grade >= FACTOR_TO_ROUND_GRADE;
-            const diffLessThanThree = Math.abs(grade - this.nextMultipleFive(grade)) < FACTOR_ROUND;
-            if(canRoundGrade && diffLessThanThree) return this.nextMultipleFive(grade);
-            return grade;
+    grades () {
+        return this._grades.map(grade => {
+            return grade.value;
         })
-    }
-
-    nextMultipleFive(grade: number) {
-        return Math.ceil(grade/5) * 5
     }
 }

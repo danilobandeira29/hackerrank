@@ -11,8 +11,8 @@ export default class ChocolateBar {
 
     divide (): number {
         return this.selected.reduce((accumulator, _, index) => {
-            const numbers = this.segment(index);
-            if(this.isValidToDivide(numbers)) accumulator++;
+            const segment = this.segment(index);
+            if(this.isValidToDivide(segment)) accumulator++;
             return accumulator;
         }, 0)
     }

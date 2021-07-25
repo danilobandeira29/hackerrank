@@ -1,4 +1,4 @@
-export default class Chocolate {
+export default class ChocolateBar {
     selected: number[];
     birthDay: number;
     birthMonth: number;

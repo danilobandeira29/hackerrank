@@ -2,8 +2,8 @@ import InvalidIntNumbersException from "./InvalidIntNumbersException";
 import CalculatorIntNumbers from "./CalculatorIntNumbers";
 
 test("should throw exception if array length is less or equal to 0", function () {
-    const numbers = [] as number[];
-    expect(() => new CalculatorIntNumbers(numbers)).toThrow(new InvalidIntNumbersException());
+    const emptyNumbers = [] as number[];
+    expect(() => new CalculatorIntNumbers(emptyNumbers)).toThrow(new InvalidIntNumbersException());
 });
 
 test("should throw exception if array length is bigger than 10", function () {

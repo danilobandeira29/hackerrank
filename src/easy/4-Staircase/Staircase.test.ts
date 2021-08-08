@@ -1,10 +1,9 @@
-import Staircase from "./main";
+import Staircase from "./Staircase";
 
-test("should print staircase # of size n", function () {
-    const size = 6;
+test("should print #'s with the staircase's size", function () {
+    const staircaseSize = 6;
     console.log = jest.fn();
-    const staircase = new Staircase();
-    staircase.print(size);
+    Staircase.print(staircaseSize);
     expect(console.log).toHaveBeenNthCalledWith(1, "     #");
     expect(console.log).toHaveBeenNthCalledWith(2, "    ##");
     expect(console.log).toHaveBeenNthCalledWith(3, "   ###");

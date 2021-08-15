@@ -9,8 +9,12 @@ export default class Cake {
 
     countTallestCandle(): number {
         return this.candles.reduce((accumulator, current) => {
-            if(current === this.tallestCandle) return accumulator += 1;
+            if(this.isTallestCandle(current)) return accumulator += 1;
             return accumulator += 0;
         }, 0);
+    }
+
+    isTallestCandle(current: number) {
+        return current === this.tallestCandle;
     }
 }

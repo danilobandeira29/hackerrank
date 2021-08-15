@@ -1,4 +1,4 @@
-import Cake from "./main";
+import Cake from "./Cake";
 
 test("should return the count of the tallest candle", function () {
     const candles = [3, 2, 1, 3];

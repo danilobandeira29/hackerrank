@@ -1,25 +1,44 @@
 export default class Grade {
-    value: number;
+    private FACTOR_TO_ROUND = 3;
+    private MINIMUM_TO_ROUND = 38;
+    private value: number;
 
     constructor (value: number) {
-        this.value = this.roundOrNot(value);
+        this.value = value;
+        this.roundIfIsValid();
     }
     
-    roundOrNot(value: number) {
-        if(this.isValidToRound(value)) return this.getNextMultipleFive(value);
-        return value;
+    private roundIfIsValid() {
+        if(this.isValidToRound()) this.round();
     }
 
-    isValidToRound(value: number) {
-        const FACTOR_ROUND = 3;
-        const diffLessThanThree = Math.abs(value - this.getNextMultipleFive(value)) < FACTOR_ROUND;
-        const FACTOR_TO_ROUND_GRADE = 38;
-        return value >= FACTOR_TO_ROUND_GRADE && diffLessThanThree;
+    private isValidToRound() {
+        return this.valueIsEqualOrBiggerThanMinimumToRound() && this.diffIsLessThanFactorToRound();
+    }
+
+    private valueIsEqualOrBiggerThanMinimumToRound() {
+        return this.value >= this.MINIMUM_TO_ROUND;
+    }
+
+    private diffIsLessThanFactorToRound() {
+        return this.diffValueAndNextMultipleFive() < this.FACTOR_TO_ROUND;
+    }
+
+    private diffValueAndNextMultipleFive() {
+        return Math.abs(this.value - this.getNextMultipleFive());
     }
     
-    getNextMultipleFive(value: number) {
-        return Math.ceil(value / 5) * 5
+    private getNextMultipleFive() {
+        return Math.ceil(this.value / 5) * 5
     }
-    
+
+    private round() {
+        this.value = this.getNextMultipleFive();
+    }
+
+    get() {
+        return this.value;
+    }
+
 }
   

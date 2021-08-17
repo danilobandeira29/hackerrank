@@ -1,6 +1,6 @@
 import Fruit from "./Fruit";
 
-export default class Tree {
+export default abstract class Tree {
     root: number;
     fruits: Fruit[];
 
@@ -9,7 +9,7 @@ export default class Tree {
         this.fruits = fruits;
     }
 
-    fruitsFalled () {
+    distanceInPointFruitsFalled () {
         return this.fruits.map(fruit => fruit.point + this.root);
     }
 }

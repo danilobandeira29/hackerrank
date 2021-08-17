@@ -1,4 +1,4 @@
-export default class Fruit {
+export default abstract class Fruit {
     point: number;
     
     constructor (point: number) {

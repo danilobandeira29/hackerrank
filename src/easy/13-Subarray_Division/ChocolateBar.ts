@@ -17,16 +17,16 @@ export default class ChocolateBar {
         }, 0)
     }
 
-    setCurrentSquare (beginSquare: number) {
+    private setCurrentSquare (beginSquare: number) {
         const endSquare = beginSquare + this.birthDate.month;
         this.square = this.segment.slice(beginSquare, endSquare);
     }
 
-    isValidToDivide() {
+    private isValidToDivide() {
        return this.sumSquareNumbers() === this.birthDate.day;
     }
 
-    sumSquareNumbers () {
+    private sumSquareNumbers () {
         return this.square.reduce((acc, curr) => acc+curr, 0);
     }
 }

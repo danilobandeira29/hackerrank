@@ -14,7 +14,7 @@ test("should determinate the numbers of time that breaks the personal season rec
         new Score(1)
     ];
     const seasonRanking = new SeasonRanking(scores);
-    expect(seasonRanking.breakingRecords()).toEqual([2, 4]);
+    expect(seasonRanking.countLowestAndHighestPersonalRecordsBreaked()).toEqual([2, 4]);
 });
 
 test("should determinate the numbers of time that breaks the personal season record(lowest and highest score)", function () {
@@ -31,6 +31,5 @@ test("should determinate the numbers of time that breaks the personal season rec
         new Score(42)
     ];
     const seasonRanking = new SeasonRanking(scores);
-    expect(seasonRanking.breakingRecords()).toEqual([4, 0]);
+    expect(seasonRanking.countLowestAndHighestPersonalRecordsBreaked()).toEqual([4, 0]);
 });
-

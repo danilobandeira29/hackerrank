@@ -1,31 +1,32 @@
 export default class ChocolateBar {
-    selected: number[];
-    birthDay: number;
-    birthMonth: number;
+    private segment: number[];
+    private birthDate: { day: number, month: number };
+    private square: number[];
 
-    constructor (selected: number[], birthDay: number, birthMonth: number) {
-        this.selected = selected;
-        this.birthDay = birthDay;
-        this.birthMonth = birthMonth;
+    constructor (segment: number[], birthDate: { day: number, month: number }) {
+        this.segment = segment;
+        this.birthDate = birthDate;
+        this.square = [];
     }
 
-    divide (): number {
-        return this.selected.reduce((accumulator, _, index) => {
-            const segment = this.segment(index);
-            if(this.isValidToDivide(segment)) accumulator++;
-            return accumulator;
+    manyTimesCanDivide (): number {
+        return this.segment.reduce((manyTimesCanDivide, _, index) => {
+            this.setCurrentSquare(index);
+            if(this.isValidToDivide()) manyTimesCanDivide++;
+            return manyTimesCanDivide;
         }, 0)
     }
 
-    segment (number: number) {
-        return this.selected.slice(number, number + this.birthMonth);;
+    setCurrentSquare (beginSquare: number) {
+        const endSquare = beginSquare + this.birthDate.month;
+        this.square = this.segment.slice(beginSquare, endSquare);
     }
 
-    isValidToDivide(numbers: number[]) {
-       return this.sumNumbers(numbers) === this.birthDay;
+    isValidToDivide() {
+       return this.sumSquareNumbers() === this.birthDate.day;
     }
 
-    sumNumbers (numbers: number[]) {
-        return numbers.reduce((acc, curr) => acc+curr, 0);
+    sumSquareNumbers () {
+        return this.square.reduce((acc, curr) => acc+curr, 0);
     }
 }

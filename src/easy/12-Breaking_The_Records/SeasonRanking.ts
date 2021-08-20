@@ -15,15 +15,15 @@ export default class SeasonRanking {
         this.countLowestScore = 0;
     }
 
-    breakingRecords () {
+    countLowestAndHighestPersonalRecordsBreaked () {
         for(const score of this.scores) {
             if(this.isLowestScore(score)) {
-                this.lowestScore = score;
-                this.countLowestScore++;
+                this.updateLowestScore(score);
+                this.incrementLowestScoreCounter();
             }
             if(this.isHighestScore(score)) {
-                this.highestScore = score;
-                this.countHighestScore++;
+                this.updateHighestScore(score);
+                this.incrementHighestScoreCounter();
             }
         }
         return [this.countHighestScore, this.countLowestScore];
@@ -33,7 +33,23 @@ export default class SeasonRanking {
         return score.value < this.lowestScore.value;
     }
 
+    updateLowestScore(score: Score) {
+        this.lowestScore = score;
+    }
+
+    incrementLowestScoreCounter() {
+        this.countLowestScore++;
+    }
+
     isHighestScore(score: Score) {
         return score.value > this.highestScore.value;
+    }
+
+    updateHighestScore(score: Score) {
+        this.highestScore = score;
+    }
+
+    incrementHighestScoreCounter() {
+        this.countHighestScore++;
     }
 }

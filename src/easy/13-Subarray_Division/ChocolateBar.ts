@@ -1,9 +1,11 @@
+import BirthDate from "./BirthDate";
+
 export default class ChocolateBar {
     private segment: number[];
-    private birthDate: { day: number, month: number };
+    private birthDate: BirthDate;
     private square: number[];
 
-    constructor (segment: number[], birthDate: { day: number, month: number }) {
+    constructor (segment: number[], birthDate: BirthDate) {
         this.segment = segment;
         this.birthDate = birthDate;
         this.square = [];

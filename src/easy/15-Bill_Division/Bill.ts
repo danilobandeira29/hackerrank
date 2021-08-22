@@ -16,8 +16,8 @@ export default class Bill {
     }
 
     calculate() {
-        const refundEachPersonWillPay = this.calculateTotalEachPersonWillPay();
-        this.calculateRefund(refundEachPersonWillPay);
+        const totalEachPersonWillPay = this.calculateTotalEachPersonWillPay();
+        this.calculateRefund(totalEachPersonWillPay);
         this.print();
     }
 

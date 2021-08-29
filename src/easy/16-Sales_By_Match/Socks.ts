@@ -1,36 +1,35 @@
 export default class Socks {
     socks: number[];
-    length: number;
-
-    constructor (length: number, socks: number[]) {
+    
+    constructor (socks: number[]) {
         this.socks = socks;
-        this.length = length;
     }
 
-    countPairs () {
-        let countPairs = 0;
-        let current = 0;
-        while(current < this.length) {
-            for(let next = current + 1; next < this.length; next++) {
-                if(this.currentIsEqualNext(current, next)) {
-                    countPairs++;
-                    this.removePairSocks(next, current);
-                    current = -1;
-                    next = this.length;
+    countSocksPairs () {
+        let countSocksPairs = 0;
+        for(let i = 0; i < this.socks.length; i++) {
+            for(let j = i + 1; j < this.socks.length; j++) {
+                if(this.currentSockIsEqualToNext(i, j)) {
+                    countSocksPairs++;
+                    this.removeCurrentSockWithPair(i, j);
+                    i = this.resetSocksCount();
+                    break;
                 }
             }
-            current++;
         }
-        return countPairs;
+        return countSocksPairs;
     }
 
-    currentIsEqualNext(sock: number, next: number) {
+    currentSockIsEqualToNext(sock: number, next: number) {
         return this.socks[sock] === this.socks[next]
     }
 
-    removePairSocks(next: number, current: number) {
-        this.socks = this.socks.filter((_, index) => index !== next && index !== current);
-        this.length = this.length - 2;
+    removeCurrentSockWithPair(current: number, pair: number) {
+        this.socks = this.socks.filter((_, index) => index !== pair && index !== current);
+    }
+
+    resetSocksCount() {
+        return -1;
     }
 
 }
